@@ -1,0 +1,56 @@
+---
+title: 本地git工具绑定github账号
+---
+
+## 1. 安装git
+
+[git下载地址](https://git-scm.com/downloads)
+
+## 2. 设置github账号
+
+安装完成后桌面或任何位置右键选择 `Git Bash Here`
+
+![右键显示](image-20210323151756733.png)
+
+输入以下命令
+
+```
+git config --global user.name "你的GitHub用户名"
+git config --global user.email "你的GitHub注册邮箱"
+```
+
+![没反应就是成功](image-20210323153112909.png)
+
+## 3. 生成ssh文件
+
+输入以下命令(输入后三个选项都直接回车即可)
+
+```
+ssh-keygen -t rsa -C "你的GitHub注册邮箱"
+```
+
+图为公钥存储位置
+
+![ssh文件存储路径](image-20210323154538629.png)
+
+复制`id_rsa.pub`文件的内容
+
+## 4. 给github账号添加公钥
+
+进入 [github → Settings → SSH and GPG keys](https://github.com/settings/keys) 点击 `New SSH key`
+
+![添加公钥](image-20210323155104481.png)
+
+Title随意，Key填复制过来的公钥
+
+## 5. 连接完成
+
+添加后在`git bash`里输入
+
+```
+ssh git@github.com
+```
+
+若成功则显示
+
+![](image-20210323155730994.png)
